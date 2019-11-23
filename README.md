@@ -23,3 +23,9 @@ The problem is to architect and train a model which is able to output the parame
 
 - The Result obtained is 0.97 iou precision at AP=0.7 (result checked on 100 images)
 
+#### Requirements:
+- Tensorflow 2.0
+- scikit-learn
+- matplotlib
+- Shapely
+- numpy
