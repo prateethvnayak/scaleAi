@@ -29,3 +29,6 @@ The problem is to architect and train a model which is able to output the parame
 - matplotlib
 - Shapely
 - numpy
+
+#### Output of Training:
+- TensorBoard Callback added for Tensorboard Event file generation. 
