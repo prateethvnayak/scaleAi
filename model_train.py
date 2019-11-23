@@ -2,9 +2,7 @@ import numpy as np
 import tensorflow as tf
 
 import main
-import pdb
 
-# tf.logging.set_verbosity(tf.logging.ERROR)
 tf.keras.backend.clear_session()
 
 
@@ -80,6 +78,8 @@ if __name__ == "__main__":
             )
         ],
     )
+
+    # Save the model
     tf.keras.models.save_model(
         model, filepath="./noise_detection_autoenc.h5", save_format="h5"
     )

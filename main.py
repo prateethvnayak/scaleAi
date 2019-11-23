@@ -10,9 +10,7 @@ IMAGE_SIZE = 200
 MAX_RAD = 50
 N_LVL = 2
 
-import pdb
-
-
+# utils for drawing
 def draw(orig, img):
 
     fig, (ax1, ax2) = plt.subplots(1, 2)
@@ -46,7 +44,7 @@ def noisy_circle(size, radius, noise):
     return (row, col, rad), img, orig_img
 
 
-def find_circle(noisy_img, orig, model):
+def find_circle(noisy_img, model):
     # Fill in this function
     noisy_img = np.expand_dims(np.expand_dims(noisy_img, axis=0), axis=-1)
     img = model.predict(noisy_img / np.amax(noisy_img)).reshape(IMAGE_SIZE, IMAGE_SIZE)
@@ -88,8 +86,8 @@ def main():
     model = tf.keras.models.load_model(filepath="./noise_detection_autoenc.h5")
     results = []
     for i in range(100):
-        params, img, orig = noisy_circle(200, 50, 2)
-        detected = find_circle(img, orig, model)
+        params, img, _ = noisy_circle(200, 50, 2)
+        detected = find_circle(img, model)
         results.append(iou(params, detected))
         print("image {}\tparams {}\t detected {}".format(i, params, detected))
     results = np.array(results)
