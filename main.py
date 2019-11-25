@@ -85,12 +85,13 @@ def main():
 
     model = tf.keras.models.load_model(filepath="./noise_detection_autoenc.h5")
     results = []
-    for i in range(100):
+    for i in range(1000):
         params, img, _ = noisy_circle(200, 50, 2)
         detected = find_circle(img, model)
         results.append(iou(params, detected))
-        print("image {}\tparams {}\t detected {}".format(i, params, detected))
+        print("image {}\tOriginal {}\tDetected {}".format(i, params, detected))
     results = np.array(results)
+    print("\nThe IOU Precision AP@0.7 :")
     print((results > 0.7).mean())
 
 
